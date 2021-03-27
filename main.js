@@ -20,7 +20,6 @@ const authorRoutes = require('./routes/author');
 const errorcontroller = require('./controllers/errors');
 // const { Server } = require('http');
 // const { compareSync } = require('bcrypt');
-const compression = require('compression');
 
 server.use(bodyParser.urlencoded({extended: false}));
 server.use(express.static(path.join(__dirname, 'public')));

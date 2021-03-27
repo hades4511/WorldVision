@@ -22,12 +22,6 @@ module.exports = class Article{
     save(){
         const db = getdb();
         return db.collection('articles').insertOne(this);
-        // .then(result =>{
-            
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        // });
     }
 
     update(){
@@ -48,10 +42,6 @@ module.exports = class Article{
     static updateclick(articleid, clicks){
         const db = getdb();
         return db.collection('articles').updateOne({ _id: new mongodb.ObjectId(articleid) }, { $set: { clicks: clicks } });
-        // .then(result => {
-
-        // })
-        // .catch(err => console.log(err));
     }
 
     static deletebyid(articleid){

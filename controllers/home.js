@@ -97,17 +97,3 @@ exports.Category = (req, res, next) => {
     })
     .catch(err => throwerror(err, 500));
 }
-
-// exports.Magazine = (req, res, next) => {
-//     res.render('author',{
-//         navs: navitems,
-//         siteName: 'News Website'
-//     });
-// }
-
-// exports.Blog = (req, res, next) => {
-//     res.render('news-post',{
-//         navs: navitems,
-//         siteName: 'News Website'
-//     });
-// }

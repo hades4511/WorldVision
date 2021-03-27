@@ -11,12 +11,6 @@ module.exports = class Author{
     signup() {
         const db = getdb();
         return db.collection('authors').insertOne(this);
-        // .then(result =>{
-            
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        // });
     }
 
     update(){
@@ -27,12 +21,6 @@ module.exports = class Author{
     static signin(username, password){
         const db = getdb();
         return db.collection('authors').find({username: username, password: password}).next();
-        // .then(author => {
-            
-        // })
-        // .catch(err =>{
-        //     console.log(err);
-        // });
     }
 
     static findById(username){

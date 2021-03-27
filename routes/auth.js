@@ -12,7 +12,7 @@ const authController = require('../controllers/auth');
 const router = express.Router();
 
 const store = new MongoDBStore({
-    uri: `mongodb+srv://${process.env.mongodbName}:${process.env.mongodbpass}@cluster0.7ow4b.mongodb.net/${process.env.mongodbcoll}?retryWrites=true&w=majority`,
+    uri: `mongodb+srv://${process.env.mongodbName}:${process.env.mongodbPass}@cluster0.7ow4b.mongodb.net/${process.env.mongodbColl}?retryWrites=true&w=majority`,
     collection: 'sessions'
 });
 

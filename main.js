@@ -10,7 +10,19 @@ const server = express();
 server.set('view engine', 'ejs');
 server.set('views', 'views');
 
-server.use(helmet());
+server.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+        defaultSrc: ["'self'"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com", "https://maxcdn.bootstrapcdn.com"],
+        scriptSrc: ["'self'"],
+        objectSrc: ["'none'"],
+        imgSrc: ["'self'", "https:"],
+        styleSrc: ["'self'", "https://fonts.googleapis.com", "https://maxcdn.bootstrapcdn.com"],
+        upgradeInsecureRequests: [],
+        },
+    })
+);
 server.use(compression());
 
 const homeroutes = require('./routes/home');
@@ -18,8 +30,6 @@ const footerRoutes = require('./routes/footer');
 const authenticationRoutes = require('./routes/auth');
 const authorRoutes = require('./routes/author');
 const errorcontroller = require('./controllers/errors');
-// const { Server } = require('http');
-// const { compareSync } = require('bcrypt');
 
 server.use(bodyParser.urlencoded({extended: false}));
 server.use(express.static(path.join(__dirname, 'public')));

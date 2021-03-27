@@ -76,21 +76,7 @@ exports.Articles = (req, res, next) => {
             resultbit: results.length > 0 ? true : false,
             results: results,
             token: req.csrfToken()
-        });
-        // if(results.length > 0){
-        //     return res.render('author/articles',{
-        //         dstate: " ",
-        //         tstate: "active",
-        //         resultbit: true,
-        //         results: results
-        //     });
-        // }
-        // res.render('author/articles',{
-        //     dstate: " ",
-        //     tstate: "active",
-        //     resultbit: false,
-        //     articles: results
-        // });  
+        }); 
     })
     .catch(err => throwerror(err, 500));
 }
@@ -99,13 +85,6 @@ exports.Profile = (req, res, next) => {
     Author.findById(req.session.username)
     .then(author => {
         return pro(res, req.csrfToken(), author, '');
-        // res.render('author/profile',{
-        //     dstate: " ",
-        //     tstate: " ",
-        //     author: author,
-        //     csrfToken: req.csrfToken(),
-        //     error: req.flash('errp')
-        // });
     })
     .catch(err => throwerror(err, 500));
 }
@@ -143,8 +122,6 @@ exports.UpdateProfile = (req, res, next) => {
             }
             else{
                 return pro(res, req.csrfToken(), thisauthor, 'New and Old Passwords Do Not Match');
-                // console.log("New and Old Passwords Do Not Match");
-                // req.flash('errp', 'New and Old Passwords Do Not Match');
             }
             thisauthor.update()
             .then(result => {
@@ -162,8 +139,6 @@ exports.UpdateProfile = (req, res, next) => {
         }
         else{
             return pro(res, req.csrfToken(), thisauthor, 'Invalid Old Password');
-            // req.flash('errp', 'Invalid Old Password');
-            // console.log("wrong oldpass");
         }
     })
     .catch(err => throwerror(err, 500));
@@ -171,11 +146,6 @@ exports.UpdateProfile = (req, res, next) => {
 
 exports.New = (req, res, next) => {
     return newp(res, req.csrfToken(), {name: '', heading: '', imageurl: '', content: ''}, '');
-    // res.render('author/newpost',{
-    //     dstate: " ",
-    //     tstate: " ",
-    //     csrfToken: req.csrfToken()
-    // });
 }
 
 exports.EditArticle = (req, res, next) => {
@@ -183,12 +153,6 @@ exports.EditArticle = (req, res, next) => {
     .then(article => {
         if(article){
             return editp(res, req.csrfToken(), article, '');
-            // res.render('author/editarticle',{
-            //     dstate: " ",
-            //     tstate: "active",
-            //     article: article,
-            //     csrfToken: req.csrfToken()
-            // });
         }
         else res.redirect('/author/articles');
     })
@@ -196,14 +160,12 @@ exports.EditArticle = (req, res, next) => {
 }
 
 exports.DeleteArticle = (req, res, next) => {
-    // res.status(200).json({msg: 'success'});
     const articleid = req.query.id;
     Article.deletebyid(articleid)
     .then(result => {
         if(result){
             console.log("deleted");
             res.status(200).json({msg: 'success'});
-            // res.redirect('author/articles');
         }
     })
     .catch(err => res.status.json({msg: err}));

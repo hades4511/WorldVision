@@ -11,7 +11,6 @@ const csrfProtection = csrf();
 router.use(csrfProtection);
 
 router.get('/editarticle', isAuth, authorController.EditArticle);
-// router.get('/deletearticle', isAuth, authorController.DeleteArticle);
 router.delete('/deletearticle', isAuth, authorController.DeleteArticle)
 router.post(
     '/profile',

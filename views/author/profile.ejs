@@ -1,0 +1,68 @@
+<%- include('includes/dashheader.ejs') %>
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Edit Profile</h4>
+              <p class="card-category">Edit your profile</p>
+            </div>
+            <div class="card-body">
+              <form method="POST" action="/author/profile">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Full Name</label>
+                      <input type="text" name="name" class="form-control" value="<%= author.fullname %>" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Email address</label>
+                      <input type="email" name="email" class="form-control" value="<%= author.email %>" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Old Password</label>
+                      <input type="password" name="oldpass" class="form-control" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">New Password</label>
+                      <input type="password" name="newpass" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Confirm Password</label>
+                      <input type="password" name="conpass" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <% if(error){ %>
+                    <div class="col-md-10">
+                        <%= error %>
+                    </div>
+                    <div class="clearfix"></div>
+                <% } %>
+                </div>
+                <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</body>
+</html>

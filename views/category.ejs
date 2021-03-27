@@ -1,0 +1,163 @@
+<%- include('includes/header.ejs') %>
+</header>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="text-center">
+        <h1 class="text-center mt-5">
+          <%= category %>
+        </h1>
+        <!-- <p class="text-secondary fs-15">
+          This text can be added in the category Description field in
+          dashboard
+        </p> -->
+      </div>
+      <!-- <% const cat = category.charAt(0) + category.substring(1).toLowerCase(); %>
+      <h5 class="text-muted font-weight-medium mb-3"><%= cat %> News</h5>> -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6  mb-5 mb-sm-2">
+      <a href="/article/?id=<%=main._id%>" class="article-link">
+        <div class="position-relative image-hover">
+          <img
+            src="<%= main.imageurl %>"
+            class="img-fluid"
+            alt="world-news"
+          />
+          <span class="thumb-title"><%= main.type.toUpperCase() %></span>
+        </div>
+        <h1 class="font-weight-600 mt-3">
+          <%= main.name %>
+        </h1>
+        <p class="fs-15 font-weight-normal">
+          <%= main.heading %>
+        </p>
+      </a>
+    </div>
+    <div class="col-lg-6  mb-5 mb-sm-2">
+      <% let rowcheck = false; %>
+      <% for(i in firstrow){ %>
+        <% if(i % 2 == 0){ %>
+          <div class="row">
+          <% rowcheck = true; %>
+        <% } %>
+        <div class="col-sm-6  mb-5 mb-sm-2">
+          <a href="/article/?id=<%=firstrow[i]._id%>" class="article-link">
+            <div class="position-relative image-hover">
+              <img
+                src="<%= firstrow[i].imageurl %>"
+                class="img-fluid"
+                alt="world-news"
+              />
+              <span class="thumb-title"><%= firstrow[i].type.toUpperCase() %></span>
+            </div>
+            <h5 class="font-weight-600 mt-3">
+              <%= firstrow[i].name %>
+            </h5>
+            <p class="fs-15 font-weight-normal">
+              <%= firstrow[i].heading %>
+            </p>
+          </a>
+        </div>
+        <% if(i % 2 != 0){ %>
+          </div>
+          <% rowcheck = false; %>
+        <% } %>
+      <% } %>
+      <% if(rowcheck){ %>
+        </div>
+        <% rowcheck = false; %>
+      <% } %>
+    </div>
+  </div>
+  <!-- <div class="row"> -->
+  <div class="row mt-5">
+    <div class="col-sm-12">
+      <!-- <h5 class="text-muted font-weight-medium mb-3">Popular News</h5> -->
+    </div>
+  </div>
+    <% for(i in rest){ %>
+      <% if(i % 4 == 0){ %>
+        <div class="row mb-4">
+        <% rowcheck = true; %>
+      <% } %>
+      <div class="col-sm-3  mb-5 mb-sm-2">
+        <a href="/article/?id=<%=rest[i]._id%>" class="article-link">
+          <div class="position-relative image-hover">
+            <img
+              src="<%= rest[i].imageurl %>"
+              class="img-fluid"
+              alt="world-news"
+            />
+            <span class="thumb-title"><%= rest[i].type.toUpperCase() %></span>
+          </div>
+          <h5 class="font-weight-600 mt-3">
+            <%= rest[i].name %>
+          </h5>
+        </a>
+      </div>
+      <% if(i % 4 == 3){ %>
+        </div>
+        <% rowcheck = false; %>
+      <% } %>
+    <% } %>
+    <% if(rowcheck){ %>
+      </div>
+      <% rowcheck = false; %>
+    <% } %>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="d-flex position-relative float-left">
+          <h3 class="section-title">Other News</h3>
+        </div>
+      </div>
+    </div>
+    <% for(i in other){ %>
+      <% if(i % 4 == 0){ %>
+        <div class="row mb-4">
+        <% rowcheck = true; %>
+      <% } %>
+      <div class="col-sm-3  mb-5 mb-sm-2">
+        <a href="/article/?id=<%=other[i]._id%>" class="article-link">
+          <div class="position-relative image-hover">
+            <img
+              src="<%= other[i].imageurl %>"
+              class="img-fluid"
+              alt="world-news"
+            />
+            <span class="thumb-title"><%= other[i].type.toUpperCase() %></span>
+          </div>
+          <h5 class="font-weight-600 mt-3">
+            <%= other[i].name %>
+          </h5>
+        </a>
+      </div>
+      <% if(i % 4 == 3){ %>
+        </div>
+        <% rowcheck = false; %>
+      <% } %>
+    <% } %>
+    <% if(rowcheck){ %>
+      </div>
+    <% } %>
+    </div>
+</div>
+
+</div>
+    <!-- container-scroller ends -->
+    <!-- partial:../partials/_footer.html -->
+    <%- include('includes/footer.ejs') %>
+    <!-- partial -->
+    <!-- inject:js -->
+    <script src="../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- plugin js for this page -->
+    <script src="../assets/vendors/aos/dist/aos.js/aos.js"></script>
+    <script src="../assets/vendors/owl.carousel/dist/owl.carousel.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    <script src="../assets/js/demo.js"></script>
+    <!-- End custom js for this page-->
+  </body>
+</html>

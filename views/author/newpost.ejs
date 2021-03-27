@@ -1,0 +1,87 @@
+<%- include('includes/dashheader.ejs') %>
+<div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">New Post</h4>
+                  <p class="card-category">Write a new post</p>
+                </div>
+                <div class="card-body">
+                  <form method="POST" action="/author/newpost">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                    <div class="row">
+					            <div class="col-md-8">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Name</label>
+                          <input type="text" class="form-control" name="name" value="<%= article.name %>" required>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Type</label>
+                          <div class="dropdown">
+                            <select name="type" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Type
+                              <span class="caret"></span>
+                              <option value="Politics"">Politics</option>
+                              <option value="World"">World</option>
+                              <option value="Business"">Business</option>
+                              <option value="Real Estate"">Real Estate</option>
+                              <option value="Education"">Education</option>
+                              <option value="Sports"">Sports</option>
+                              <option value="Travel"">Travel</option>
+                              <option value="Art"">Art</option>
+                              <option value="Fashion"">Fashion</option>
+                              <option value="Entertainment"">Entertainment</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+					            <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Heading</label>
+                          <input type="text" class="form-control" name="heading" value="<%= article.heading %>" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+					            <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Image Url</label>
+                          <input type="text" class="form-control" name="url" value="<%= article.imageurl %>" >
+                        </div>
+                      </div>
+                    </div>
+					<div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Full Post</label>
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Write your article here</label>
+                            <textarea class="form-control" rows="5" name="post" value="<%= article.content %>" required></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-8" style="color: red;">
+                        <% if(error){ %>
+                          <%= error %>
+                        <% } %>
+                    </div>
+                    <button name="preview" value="Preview" type="submit" class="btn btn-primary pull-right"/>Preview</button>
+                    <button name="publish" value="Publish" type="submit" class="btn btn-primary pull-right"/>Publish</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </body>
+  </html>

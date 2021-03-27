@@ -1,0 +1,182 @@
+<%- include('includes/dashheader.ejs') %>
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header card-header-warning card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">content_paste</i>
+              </div>
+              <p class="card-category">Total Articles</p>
+              <h3 class="card-title"><%= totalarticles %>
+                <!-- <small>GB</small> -->
+              </h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+                <!-- <i class="material-icons text-danger">warning</i> -->
+                <a href="/author/articles">View All</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">visibility</i>
+              </div>
+              <p class="card-category"> Total Views</p>
+              <h3 class="card-title"><%= totalview %></h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+                <i class="material-icons">content_paste</i> On <%= totalarticles %> Articles
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12">
+          <div class="card card-stats">
+            <div class="card-header card-header-danger card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">pending_actions</i>
+              </div>
+              <p class="card-category">Views on Recent</p>
+              <h3 class="card-title"><%= recentview %></h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+                <i class="material-icons">content_paste</i> <%= recentname %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-12">
+          <div class="card">
+            <div class="card-header card-header-tabs card-header-primary">
+              <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                  <span class="nav-tabs-title">Recents:</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="tab-content">
+                <div class="tab-pane active" id="profile">
+                  <table class="table" id="dashtable">
+                    <tbody>
+                      <% for(item of recents){ %>
+                        <tr>
+                          <td><%= item.name %></td>
+                          <td class="td-actions text-right">
+                            <a href="/author/editarticle/?id=<%= item._id %>">
+                              <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                <i class="material-icons">edit</i>
+                              </button>
+                            </a>
+                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm" onclick="removeart(this, 'dashtable')">
+                              <i class="material-icons">delete</i>
+                              <input type="hidden" value="<%= item._id %>">
+                              <input type="hidden" value="<%= token %>">
+                            </button>
+                          </td>
+                        </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-lg-6 col-md-12">
+          <div class="card">
+            <div class="card-header card-header-warning">
+              <h4 class="card-title">Employees Stats</h4>
+              <p class="card-category">New employees on 15th September, 2016</p>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Salary</th>
+                  <th>Country</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Dakota Rice</td>
+                    <td>$36,738</td>
+                    <td>Niger</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Minerva Hooper</td>
+                    <td>$23,789</td>
+                    <td>Curaçao</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Sage Rodriguez</td>
+                    <td>$56,142</td>
+                    <td>Netherlands</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Philip Chaney</td>
+                    <td>$38,735</td>
+                    <td>Korea, South</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <script src="/author/js/admin.js"></script>
+  <footer class="footer">
+    <div class="container-fluid">
+      <nav class="float-left">
+        <ul>
+          <li>
+            <a href="https://www.creative-tim.com">
+              Creative Tim
+            </a>
+          </li>
+          <li>
+            <a href="https://creative-tim.com/presentation">
+              About Us
+            </a>
+          </li>
+          <li>
+            <a href="http://blog.creative-tim.com">
+              Blog
+            </a>
+          </li>
+          <li>
+            <a href="https://www.creative-tim.com/license">
+              Licenses
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="copyright float-right">
+        &copy;
+        <script>
+          document.write(new Date().getFullYear())
+        </script>, made with <i class="material-icons">favorite</i> by
+        <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+      </div>
+    </div>
+  </footer>
+</div>
+</div>
+</body>
+</html>

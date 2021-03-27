@@ -1,0 +1,60 @@
+<%- include('includes/dashheader.ejs') %>
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title ">My Posts</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table" id="arttable">
+                  <thead class=" text-primary">
+                    <th colspan="2">
+                      Name
+                    </th>
+                    <th>
+                      Date
+                    </th>
+                    <th>
+                      Views
+                    </th>
+                    <th>
+                      
+                    </th>
+                  </thead>
+                  <tbody>
+                    <% if(resultbit){ %>
+                      <% for(item of results){ %>
+                        <tr>
+                          <td colspan="2"><a href="/author/editarticle/?id=<%= item._id %>">
+                            <%= item.name %>
+                          </td></a>
+                          <td><a href="/author/editarticle/?id=<%= item._id %>">
+                            <%= item.date.toLocaleString() %>
+                          </td></a>
+                          <td><a href="/author/editarticle/?id=<%= item._id %>">
+                            <%= item.clicks %>
+                          </td></a>
+                          <td>
+                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm" onclick="removeart(this, 'arttable')">
+                              <i class="material-icons">delete</i>
+                              <input type="hidden" value="<%= item._id %>">
+                              <input type="hidden" value="<%= token %>">
+                            </button>
+                          </td>
+                        </tr>
+                      <% } %>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/author/js/admin.js"></script>
+  </body>
+</html>

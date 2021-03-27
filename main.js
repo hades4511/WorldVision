@@ -17,7 +17,7 @@ server.use(
         fontSrc: ["'self'", "https://fonts.gstatic.com", "https://maxcdn.bootstrapcdn.com"],
         scriptSrc: ["'self'"],
         objectSrc: ["'none'"],
-        imgSrc: ["'self'", "https:"],
+        imgSrc: ["'self'", "https:", "data:image/svg"],
         styleSrc: ["'self'", "https://fonts.googleapis.com", "https://maxcdn.bootstrapcdn.com"],
         upgradeInsecureRequests: [],
         },
